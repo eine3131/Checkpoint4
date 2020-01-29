@@ -1,0 +1,28 @@
+{
+  "name": "checkpoint4",
+  "version": "1.0.0",
+  "description": "Site de découverte des tehniques du Judo",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eine3131/Checkpoint4.git"
+  },
+  "author": "Eine",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eine3131/Checkpoint4/issues"
+  },
+  "homepage": "https://github.com/eine3131/Checkpoint4#readme",
+  "dependencies": {
+    "concurrently": "^5.1.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
