@@ -21,6 +21,30 @@ app.get(`/api/Judo_Techniques`, (req, res) => {
   })
 });
 
+// app.get(`/api/Judo_Techniques/mouvement`, (req, res) => {
+//   const formData = req.body;
+//   connection.query(`SELECT * FROM mouvement`, formData, (err, results) => {
+//     if (err) {
+//       console.log(err);
+//       res.status(500).send("Error");
+//     } else {
+//       res.status(200).json(formData);
+//     }
+//   });
+// });
+
+app.post(`/api/Judo_Techniques`, (req, res) => {
+  const formData = req.body;
+  connection.query(`INSERT INTO mouvement SET ?`, formData, (err, results) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send("Error");
+    } else {
+      res.status(200).json(formData);
+    }
+  });
+});
+
 const port = 5000;
 
 app.listen(port, err => {
