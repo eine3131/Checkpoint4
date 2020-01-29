@@ -1,8 +1,6 @@
 const express = require('express');
-
 const app = express();
-const mysql = require ('mysql');
-const connection = mysql.createConnection(conf);
+const connection = require('./conf');
 
 app.get(`/api/Judo_Techniques`, (req, res) => {
   connection.query('SELECT * FROM mouvement', (err, results) => {
