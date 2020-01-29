@@ -2,6 +2,14 @@ const express = require('express');
 const app = express();
 const connection = require('./conf');
 
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+);
+
 app.get(`/api/Judo_Techniques`, (req, res) => {
   connection.query('SELECT * FROM mouvement', (err, results) => {
     if (err) {
