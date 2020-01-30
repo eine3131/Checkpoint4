@@ -4,8 +4,11 @@
   "description": "Site de découverte des tehniques du Judo",
   "main": "index.js",
   "scripts": {
+    "client-install": "cd client && npm install",
     "start": "node index.js",
-    "server": "nodemon index.js"
+    "server": "nodemon index.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -18,6 +21,7 @@
   },
   "homepage": "https://github.com/eine3131/Checkpoint4#readme",
   "dependencies": {
+    "axios": "^0.19.2",
     "concurrently": "^5.1.0",
     "express": "^4.17.1",
     "mysql": "^2.18.1"
