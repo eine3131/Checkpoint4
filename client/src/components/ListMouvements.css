@@ -1,14 +1,15 @@
 .mouvements{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
   margin: 70px;
 }
 
 .amouvement{
-  margin: 60px;
+  margin: 20px;
 }
 
 .imgmvt{
   width:200px;
+  height: 300px;
 }

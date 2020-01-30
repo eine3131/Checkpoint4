@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './listMouvements.css';
+import './ListMouvements.css';
 import axios from 'axios';
 
 class ListMouvements extends Component {
@@ -7,17 +7,13 @@ class ListMouvements extends Component {
     super(props);
     this.state = {
       mouvements: [],
-      // selectedFile: null
     };
-    // this.onChangeHandler = this.onChangeHandler.bind(this);
-    // this.onClickHandler = this.onClickHandler.bind(this);
   }
 
   componentDidMount() {
     axios
       .get(`/api/mouvement`)
       .then(res => res.data)
-      // console.log(res.data)
       .then(response =>
         this.setState({
           mouvements: response
@@ -26,44 +22,23 @@ class ListMouvements extends Component {
         console.error(e);
       });
   }
-  // upload files-images.
-  // onChangeHandler = event => {
-  //   this.setState({
-  //     selectedFile: event.target.files[0],
-  //   })
-  // }
-
-  // onClickHandler = () => {
-  //   const data = new FormData()
-  //   data.append('file', this.state.selectedFile)
-  //   axios.post("/upload", data, {
-  //   })
-  //     .then(res => {
-  //       console.log(res.statusText)
-  //     })
-  // }
 
   render() {
+    const { activeTechniqueFilter } = this.props;
     const { mouvements } = this.state;
+    const filteredMouvements = mouvements
+      .filter(mouvement => (!activeTechniqueFilter || mouvement.id === activeTechniqueFilter))
     return (
       <div>
-        <h1>
-          Mouvements
-        </h1>
         <div className="mouvements">
-          {mouvements.map(mouvement =>
+          {filteredMouvements.map(mouvement =>
             <div className="amouvement" key={mouvement.id}>
-              <img className ="imgmvt" alt ={mouvement.nom} src={mouvement.image} />
+              <img className="imgmvt" alt={mouvement.nom} src={mouvement.image} />
               <p>{mouvement.nom}</p>
             </div>
           )}
-        </div>
-        {/* upload files-images */}
-        {/* <div className='uploadedFiles'>
-          <input type="file" name="file" onChange={this.onChangeHandler} />
-          <button type="button" class="btn btn-success btn-block" onClick={this.onClickHandler}>Upload</button>
-        </div> */}
-      </div>
+        </div>     
+      </div >
     );
   }
 }
