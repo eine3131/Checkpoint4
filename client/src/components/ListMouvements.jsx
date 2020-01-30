@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-// import './listMouvement.css';
+import './listMouvements.css';
 import axios from 'axios';
 
-class listMouvements extends Component {
+class ListMouvements extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,12 +12,12 @@ class listMouvements extends Component {
 
   componentDidMount() {
     axios
-      .get(`api/mouvement`)
+      .get(`/api/mouvement`)
       .then(res => res.data)
       // console.log(res.data)
-      .then(result =>
+      .then(response =>
         this.setState({
-          mouvements: result
+          mouvements: response
         }))
       .catch(e => {
         console.error(e);
@@ -28,16 +28,19 @@ class listMouvements extends Component {
     const { mouvements } = this.state;
     return (
       <div>
-        <h2>
+        <h1>
           Mouvements
-        </h2>
-        <ul>
+        </h1>
+        <div className = "mouvements">
           {mouvements.map(mouvement =>
-            <li key={mouvement.id}> {mouvement.image} {mouvement.nom}</li>
+            <div className = "amouvement" key={mouvement.id}> 
+            {mouvement.image} 
+            {mouvement.nom}
+            </div>
           )}
-        </ul>
+        </div>
       </div>
     );
   }
 }
-  export default listMouvements;
+  export default ListMouvements;

@@ -1,0 +1,10 @@
+.mouvements{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 70px;
+}
+
+.amouvement{
+  margin: 30px;
+}
