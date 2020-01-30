@@ -7,10 +7,10 @@ class ListMouvements extends Component {
     super(props);
     this.state = {
       mouvements: [],
-      selectedFile: null
+      // selectedFile: null
     };
-    this.onChangeHandler = this.onChangeHandler.bind(this);
-    this.onClickHandler = this.onClickHandler.bind(this);
+    // this.onChangeHandler = this.onChangeHandler.bind(this);
+    // this.onClickHandler = this.onClickHandler.bind(this);
   }
 
   componentDidMount() {
@@ -27,21 +27,21 @@ class ListMouvements extends Component {
       });
   }
   // upload files-images.
-  onChangeHandler = event => {
-    this.setState({
-      selectedFile: event.target.files[0],
-    })
-  }
+  // onChangeHandler = event => {
+  //   this.setState({
+  //     selectedFile: event.target.files[0],
+  //   })
+  // }
 
-  onClickHandler = () => {
-    const data = new FormData()
-    data.append('file', this.state.selectedFile)
-    axios.post("/upload", data, {
-    })
-      .then(res => {
-        console.log(res.statusText)
-      })
-  }
+  // onClickHandler = () => {
+  //   const data = new FormData()
+  //   data.append('file', this.state.selectedFile)
+  //   axios.post("/upload", data, {
+  //   })
+  //     .then(res => {
+  //       console.log(res.statusText)
+  //     })
+  // }
 
   render() {
     const { mouvements } = this.state;
@@ -53,16 +53,16 @@ class ListMouvements extends Component {
         <div className="mouvements">
           {mouvements.map(mouvement =>
             <div className="amouvement" key={mouvement.id}>
-              {mouvement.image}
-              {mouvement.nom}
+              <img className ="imgmvt" alt ={mouvement.nom} src={mouvement.image} />
+              <p>{mouvement.nom}</p>
             </div>
           )}
         </div>
         {/* upload files-images */}
-        <div className='uploadedFiles'>
-            <input type="file" name="file" onChange={this.onChangeHandler} />
-            <button type="button" class="btn btn-success btn-block" onClick={this.onClickHandler}>Upload</button>
-          </div>
+        {/* <div className='uploadedFiles'>
+          <input type="file" name="file" onChange={this.onChangeHandler} />
+          <button type="button" class="btn btn-success btn-block" onClick={this.onClickHandler}>Upload</button>
+        </div> */}
       </div>
     );
   }

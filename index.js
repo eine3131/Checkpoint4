@@ -23,7 +23,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage }).single('file');
 
-app.post('/upload', (req, res) => {
+app.post('/', (req, res) => {
   upload(req, res, err => {
     if (err instanceof multer.MulterError) {
       return res.status(500).json(err);
