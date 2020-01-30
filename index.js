@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const connection = require('./conf');
+const multer = require('multer');
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -9,6 +10,31 @@ app.use(
     extended: true
   })
 );
+
+//upload files-images
+const storage = multer.diskStorage({
+  destination(req, file, cb) {
+    cb(null, 'public');
+  },
+  filename(req, file, cb) {
+    cb(null, `${Date.now()}-${file.originalname}`);
+  }
+});
+
+const upload = multer({ storage }).single('file');
+
+app.post('/upload', (req, res) => {
+  upload(req, res, err => {
+    if (err instanceof multer.MulterError) {
+      return res.status(500).json(err);
+    }
+    if (err) {
+      return res.status(500).json(err);
+    }
+    return res.status(200).send(req.file);
+  });
+});
+
 
 //Display all the mouvements.
 app.get(`/api/Judo_Techniques`, (req, res) => {
@@ -50,16 +76,16 @@ app.post(`/api/Judo_Techniques`, (req, res) => {
 
 // Display every mouvements belonging to a precise category.
 app.get(`/api/Judo_Techniques/mouvement/:id`, (req, res) => {
-  const id= req.params.id;
+  const id = req.params.id;
   connection.query
-  ("SELECT mouvement.* FROM technique JOIN mouvement ON technique_id = technique.id WHERE technique.id = ?",
-  [id], (err, results) => {
-    if (err) {
-      res.status(500).send ("An error occured");
-    } else {
-      res.json(results);
-    } 
-  })
+    ("SELECT mouvement.* FROM technique JOIN mouvement ON technique_id = technique.id WHERE technique.id = ?",
+      [id], (err, results) => {
+        if (err) {
+          res.status(500).send("An error occured");
+        } else {
+          res.json(results);
+        }
+      })
 });
 
 app.get(`/api/mouvement`, (req, res) => {
@@ -90,7 +116,12 @@ app.get(`/api/technique`, (req, res) => {
   })
 });
 
+
+
+
 const port = 5000;
+
+
 
 app.listen(port, err => {
   console.log('listening on port 5000');
