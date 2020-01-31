@@ -1,15 +1,27 @@
 .mouvements{
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   margin: 70px;
 }
 
 .amouvement{
   margin: 20px;
+  width : 600px;
+  display: flex;
+  flex-direction: row;
+  text-align: justify;
+
 }
 
 .imgmvt{
   width:200px;
   height: 300px;
+}
+
+@media screen and (max-width: 600px) {
+   .amouvement{
+    display: flex;
+    flex-direction: column;
+    width : 400px;
+  }
 }

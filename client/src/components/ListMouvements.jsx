@@ -27,17 +27,25 @@ class ListMouvements extends Component {
     const { activeTechniqueFilter } = this.props;
     const { mouvements } = this.state;
     const filteredMouvements = mouvements
-      .filter(mouvement => (!activeTechniqueFilter || mouvement.id === activeTechniqueFilter))
+      .filter(mouvement => (!activeTechniqueFilter || mouvement.technique_id === activeTechniqueFilter))
     return (
       <div>
         <div className="mouvements">
           {filteredMouvements.map(mouvement =>
             <div className="amouvement" key={mouvement.id}>
-              <img className="imgmvt" alt={mouvement.nom} src={mouvement.image} />
-              <p>{mouvement.nom}</p>
+              <div className="dispoMvt">
+                <img className="imgmvt" alt={mouvement.nom} src={mouvement.image} />
+              </div>
+              <div className="dispoMvt">
+                <h2>{mouvement.nom}</h2>
+                <p>Description : {mouvement.description} </p>
+                <p>Enchainement : {mouvement.enchainement} </p>
+                <p>Contre : {mouvement.contre} </p>
+                <p>Ceinture : {mouvement.contre} </p>
+              </div>
             </div>
           )}
-        </div>     
+        </div>
       </div >
     );
   }
