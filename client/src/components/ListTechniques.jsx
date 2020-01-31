@@ -34,8 +34,7 @@ class ListTechniques extends Component {
   render() {
     const { techniques, activeTechniqueFilter } = this.state;
     return (
-      <div>
-        <p> Choisir une catégorie </p>
+      <div className = "choixCatég">
         <select value={activeTechniqueFilter} onChange={this.handSelectValue}>
           <option className="oneTechn" value="Toutes les catégories"> Toutes les catégories </option>
           {techniques.map((technique, id) => (

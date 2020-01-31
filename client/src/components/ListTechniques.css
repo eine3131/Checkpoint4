@@ -4,3 +4,8 @@ select{
   margin-top: 10px;
 }
 
+.choixCatég {
+  display : flex;
+  justify-content: center;
+}
+

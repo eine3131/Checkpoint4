@@ -8,14 +8,16 @@
   margin: 20px;
   width : 600px;
   display: flex;
-  flex-direction: row;
   text-align: justify;
-
 }
 
 .imgmvt{
   width:200px;
   height: 300px;
+}
+
+.dispoMvt {
+  margin: 10px;
 }
 
 @media screen and (max-width: 600px) {

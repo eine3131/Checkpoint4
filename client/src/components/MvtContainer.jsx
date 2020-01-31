@@ -2,7 +2,8 @@ import React from 'react';
 import ListTechniques from './ListTechniques';
 import ListMouvements from './ListMouvements';
 
-const mvtContainer = () => {
+
+const MvtContainer = () => {
   return (
     <div>
       <ListTechniques />
@@ -11,4 +12,4 @@ const mvtContainer = () => {
   );
 }
 
-export default mvtContainer;
+export default MvtContainer;

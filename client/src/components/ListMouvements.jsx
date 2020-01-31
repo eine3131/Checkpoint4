@@ -28,6 +28,9 @@ class ListMouvements extends Component {
     const { mouvements } = this.state;
     const filteredMouvements = mouvements
       .filter(mouvement => (!activeTechniqueFilter || mouvement.technique_id === activeTechniqueFilter))
+      // .filter(mouvement => {
+      //   return activeTechniqueFilter = 'Toutes les catégories' || mouvement.technique_id === activeTechniqueFilter;
+      // })
     return (
       <div>
         <div className="mouvements">
@@ -38,10 +41,14 @@ class ListMouvements extends Component {
               </div>
               <div className="dispoMvt">
                 <h2>{mouvement.nom}</h2>
-                <p>Description : {mouvement.description} </p>
-                <p>Enchainement : {mouvement.enchainement} </p>
-                <p>Contre : {mouvement.contre} </p>
-                <p>Ceinture : {mouvement.contre} </p>
+                <h4> Description </h4>
+                <p> {mouvement.description} </p>
+                <h4> Enchainement : </h4>
+                <p> {mouvement.enchainement} </p>
+                <h4> Contre </h4>
+                <p> {mouvement.contre} </p>
+                <h4> Ceinture </h4>
+                <p> {mouvement.ceinture} </p>
               </div>
             </div>
           )}
